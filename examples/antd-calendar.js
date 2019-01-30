@@ -203,6 +203,15 @@ class DemoMultiFormat extends React.Component {
     });
   }
 
+  dateRender = (current, value) => {
+    return <span>
+      {current.date()}
+      <div>
+        签
+      </div>
+    </span>
+  }
+
   render() {
     const state = this.state;
     return (<div style={{ width: 400, margin: 20 }}>
@@ -214,7 +223,8 @@ class DemoMultiFormat extends React.Component {
       <Calendar
         locale={cn ? zhCN : enUS}
         style={{ zIndex: 1000 }}
-        dateInputPlaceholder="please input"
+        showDateInput={false}
+        dateRender={this.dateRender}
         format={multiFormats}
         value={state.value}
         onChange={this.onChange}
